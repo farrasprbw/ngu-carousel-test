@@ -1,0 +1,39 @@
+<ngu-carousel
+  #myCarousel
+  [inputs]="carouselConfig"
+  [dataSource]="carouselItems"
+>
+  <div *nguCarouselDef="let item" class="item">
+    <div class="tile">{{ item }}</div>
+  </div>
+  <button NguCarouselNext class="rightRs">></button>
+  <button NguCarouselPrev class="leftRs"><</button>
+  <ul class="myPoint" NguCarouselPoint>
+    <li
+      *ngFor="let j of myCarousel.pointNumbers; let j = index"
+      [class.active]="j == myCarousel.activePoint"
+      (click)="myCarousel.moveTo(j)"
+    ></li>
+  </ul>
+</ngu-carousel>
+
+<h1>Reset</h1>
+<div>
+  <label><input type="checkbox" [(ngModel)]="resetAnim" />With Animation</label>
+</div>
+<button (click)="reset()">reset</button>
+
+<div>
+  <h1>Move to slide</h1>
+  <select [(ngModel)]="slideNo">
+    <option *ngFor="let j of myCarousel.pointNumbers" [value]="j">
+      {{ j + 1 }}
+    </option>
+  </select>
+  <div>
+    <label
+      ><input type="checkbox" [(ngModel)]="withAnim" />With Animation</label
+    >
+  </div>
+  <button (click)="moveTo(slideNo)">move to {{ +slideNo + 1 }}</button>
+</div>
