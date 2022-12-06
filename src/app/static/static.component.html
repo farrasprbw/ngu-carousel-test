@@ -1,25 +1,51 @@
-<ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="[first, second, third]">
-	<div *nguCarouselDef="let item;" class="item">
-		<div class="tile">
-			<ng-container *ngTemplateOutlet="item"></ng-container>
-		</div>
-	</div>
+<ngu-carousel
+  #myCarousel
+  [inputs]="carouselConfig"
+  [dataSource]="[first, second]"
+>
+  <div *nguCarouselDef="let item" class="item">
+    <div class="tile">
+      <ng-container *ngTemplateOutlet="item"></ng-container>
+    </div>
+  </div>
 
-	<ng-template #first>
-		<p>First</p>
-	</ng-template>
+  <ng-template #first>
+    <table>
+      <tr>
+        <th>Company</th>
+        <th>Contact</th>
+      </tr>
+      <tr>
+        <td>Alfreds Futterkiste</td>
+        <td>Maria Anders</td>
+      </tr>
+      <tr>
+        <td>Centro comercial Moctezuma</td>
+        <td>Francisco Chang</td>
+      </tr>
+    </table>
+  </ng-template>
 
-	<ng-template #second>
-		<p>Second</p>
-	</ng-template>
+  <ng-template #second>
+    <table>
+      <tr>
+        <th>Contact</th>
+        <th>Country</th>
+      </tr>
+      <tr>
+        <td>Maria Anders</td>
+        <td>Germany</td>
+      </tr>
+      <tr>
+        <td>Francisco Chang</td>
+        <td>Mexico</td>
+      </tr>
+    </table>
+  </ng-template>
 
-	<ng-template #third>
-		<p>Third</p>
-	</ng-template>
-
-	<button NguCarouselNext class="rightRs">></button>
-	<button NguCarouselPrev class="leftRs"><</button>
-	<ul class="myPoint" NguCarouselPoint>
+  <button NguCarouselNext class="rightRs">></button>
+  <button NguCarouselPrev class="leftRs"><</button>
+  <!-- <ul class="myPoint" NguCarouselPoint>
 		<li *ngFor="let j of myCarousel.pointNumbers; let j = index" [class.active]="j==myCarousel.activePoint" (click)="myCarousel.moveTo(j)"></li>
-	</ul>
+	</ul> -->
 </ngu-carousel>
